@@ -16,3 +16,4 @@ printf
 octal
 ean
 upc
+digit_count
