@@ -11,3 +11,5 @@ date
 isbn
 phone_number
 product_info
+reverse
+printf
