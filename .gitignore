@@ -20,3 +20,6 @@ digit_count
 time_convert
 wind_speed
 broker
+chapter_6/examples/count_digits
+chapter_6/examples/print_table_of_squares
+chapter_6/examples/sum_series_of_numbers
