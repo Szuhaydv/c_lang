@@ -3,31 +3,31 @@
 #define MAX_LEN 100
 
 int main(void) {
-    char ch, current = 0, a[MAX_LEN], word_len = 0, mark_id = 0;
+    char ch, a[MAX_LEN];
+    short sentence_len = 0, word_len = 0;
     printf("Enter a sentence: ");
-    while ((ch = getchar()) != '.' && ch != '!' && ch != '?' && current < MAX_LEN) {
-        a[current++] = ch;
+    while ((ch = getchar()) != '\n' && sentence_len < MAX_LEN) {
+        a[sentence_len] = ch;
+        if (ch == '.' || ch == '!' || ch == '?') {
+            break;
+        }
+        sentence_len++;
     }
-    mark_id = current;
-    a[current--] = ch;
-    for (; current >= 0; current--) {
-        if (a[current] == ' ' || current == 0) {
-            if (current == 0) {
-                current = -1;
-                word_len += 1;
+    for (int i = sentence_len - 1; i >= 0; i--) {
+        word_len += 1;
+        if (a[i] == ' ') {
+            for (int j = i + 1; j < i + word_len; j++) {
+                putchar(a[j]);
             }
-            for (int i = current + 1; i < current + 1 + word_len; i++) {
-                putchar(a[i]);
-            }
-            if (current != -1) {
-                putchar(' ');
-            }
+            putchar(' ');
             word_len = 0;
-        } else {
-            word_len += 1;
+        } else if (i == 0) {
+            for (int j = 0; j < word_len; j++) {
+                putchar(a[j]);
+            }
         }
     }
-    putchar(a[mark_id]);
+    putchar(a[sentence_len]);
     putchar('\n');
     return 0;
 }
